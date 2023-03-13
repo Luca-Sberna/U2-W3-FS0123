@@ -12,14 +12,26 @@ class Pet {
 
 }
 
-const a = new Pet("Fido", "Marco", "cane", "pastore tedesco");
-const b = new Pet("Whiskers", "Giulia", "gatto", "persiano");
+const resultsList = document.getElementById("results");
 
-console.log(a.compareOwner(b));
-console.log(b.compareOwner(a));
+const pet1 = new Pet("Fido", "Marco", "cane", "pastore tedesco");
+const pet2 = new Pet("Whiskers", "Giulia", "gatto", "persiano");
+const pet3 = new Pet("Rufus", "Carla", "cane", "barboncino");
+const pet4 = new Pet("Fluffy", "Carla", "gatto", "siamese");
 
-const c = new Pet("Rufus", "Carla", "cane", "barboncino");
-const d = new Pet("Fluffy", "Carla", "gatto", "siamese");
+const pets = [pet1, pet2, pet3, pet4];
 
-console.log(c.compareOwner(d));
-console.log(d.compareOwner(c)); 
+for (let i = 0; i < pets.length; i++) {
+    for (let j = i + 1; j < pets.length; j++) {
+        const petA = pets[i];
+        const petB = pets[j];
+
+        const comparisonResult = petA.compareOwner(petB);
+
+        const listItem = document.createElement("li");
+        const text = document.createTextNode(`${petA.petName} e ${petB.petName} hanno lo stesso proprietario? ${comparisonResult}`);
+        listItem.appendChild(text);
+
+        resultsList.appendChild(listItem);
+    }
+}
