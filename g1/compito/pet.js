@@ -31,7 +31,8 @@ form.addEventListener('submit', (event) => {
     const pet = new Pet(petName, ownerName, specifies, breed);
     pets.push(pet);
     addLista();
-    input.forEach(field => field.value = '');
+    /* input.forEach(field => field.value = ''); */
+    event.target.reset();
 });
 
 
