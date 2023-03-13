@@ -18,7 +18,7 @@ class User {
 
 }
 
-const x = new User("Marco", "Rossi", 30, "Roma");
-const y = new User("Giulia", "Bianchi", 25, "Milano");
+const x = new User("Marco", "Rossi", 20, "Napoli");
+const y = new User("Carla", "Violetta", 35, "Milano");
 console.log(x.compareAge(y));
 console.log(y.compareAge(x)); 
