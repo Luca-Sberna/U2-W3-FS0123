@@ -12,26 +12,33 @@ class Pet {
 
 }
 
+const form = document.querySelector('form');
+const input = document.querySelectorAll('input');
 const resultsList = document.getElementById("results");
 
-const pet1 = new Pet("Fido", "Marco", "cane", "pastore tedesco");
-const pet2 = new Pet("Whiskers", "Giulia", "gatto", "persiano");
-const pet3 = new Pet("Rufus", "Carla", "cane", "barboncino");
-const pet4 = new Pet("Fluffy", "Carla", "gatto", "siamese");
 
-const pets = [pet1, pet2, pet3, pet4];
+const pets = [];
 
-for (let i = 0; i < pets.length; i++) {
-    for (let j = i + 1; j < pets.length; j++) {
-        const petA = pets[i];
-        const petB = pets[j];
 
-        const comparisonResult = petA.compareOwner(petB);
+form.addEventListener('submit', (event) => {
+    //previene l'invio del form predefinito
+    event.preventDefault();
 
-        const listItem = document.createElement("li");
-        const text = document.createTextNode(`${petA.petName} e ${petB.petName} hanno lo stesso proprietario? ${comparisonResult}`);
-        listItem.appendChild(text);
+    const petName = document.querySelector('.input-name').value;
+    const ownerName = document.querySelector('.input-owner').value;
+    const specifies = document.querySelector('.input-specifies').value;
+    const breed = document.querySelector('.input-breed').value;
+    const pet = new Pet(petName, ownerName, specifies, breed);
+    pets.push(pet);
+    addLista();
+    input.forEach(field => field.value = '');
+});
 
-        resultsList.appendChild(listItem);
-    }
+
+function addLista() {
+    pets.forEach(pet => {
+        const li = document.createElement('li');
+        li.textContent = `${pet.petName},${pet.ownerName},${pet.specifies},${pet.breed}`;
+        resultsList.appendChild(li);
+    });
 }
