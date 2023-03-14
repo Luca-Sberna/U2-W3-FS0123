@@ -12,6 +12,7 @@ let timerCount = 0;
 const SAVE_NAME = () => {
     const name = nameInput.value;
     localStorage.setItem('name', name);
+    showSavedName.innerText = nameInput.value;
     alert('Nome salvato con successo');
 
 };
@@ -38,15 +39,6 @@ const SAVED_NAME = () => {
         showSavedName.innerText = savedName;
     }
 };
-
-
-
-//al click del btn save mi scrive nel tag <p></p> il valore inserito precedentemente nel locale storage
-SAVE_BTN.addEventListener('click', () => {
-    showSavedName.innerText = nameInput.value;
-
-});
-
 
 
 //creo e salvo nel sessions torage la variabile per inizializzare il timer
