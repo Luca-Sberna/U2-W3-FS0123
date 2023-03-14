@@ -1,8 +1,11 @@
 //inizializzo le costanti che mi serviranno globalmente
-const nameInput = document.getElementById('name');
+const nameInput = document.querySelector('.name');
 const showSavedName = document.querySelector('p');
-const SAVE_BTN = document.querySelector('#save-btn');
-const TIMER = document.getElementById('timer');
+const SAVE_BTN = document.querySelector('.save-btn');
+const REMOVE_BTN = document.querySelector('.remove-btn');
+const TIMER = document.querySelector('.timer');
+let timerCount = 0;
+
 
 
 //salvo in una costante la funzione che mi salva il valore del campo input nel local
@@ -10,8 +13,9 @@ const SAVE_NAME = () => {
     const name = nameInput.value;
     localStorage.setItem('name', name);
     alert('Nome salvato con successo');
+
 };
-document.getElementById('save-btn').addEventListener('click', SAVE_NAME);
+document.querySelector('.save-btn').addEventListener('click', SAVE_NAME);
 
 
 //salvo in una costante la funzione che mi va a cancellare dal local il valore inserito precedentemente
@@ -20,8 +24,9 @@ const REMOVE_NAME = () => {
     nameInput.value = '';
     showSavedName.textContent = '';
     alert('Nome rimosso con successo');
+
 };
-document.getElementById('remove-btn').addEventListener('click', REMOVE_NAME);
+document.querySelector('.remove-btn').addEventListener('click', REMOVE_NAME);
 
 
 //salvo in una costante la funzione che mi prende nel local storage il dato inserito nel campo input name
@@ -33,7 +38,7 @@ const SAVED_NAME = () => {
         showSavedName.textContent = savedName;
     }
 };
-SAVED_NAME();
+
 
 
 //al click del btn save mi scrive nel tag <p></p> il valore inserito precedentemente nel locale storage
@@ -44,7 +49,7 @@ SAVE_BTN.addEventListener('click', () => {
 
 
 
-let timerCount = 0;
+//creo e salvo nel sessions torage la variabile per inizializzare il timer
 const START_TIMER = () => {
     if (!timerCount) {
         timerCount = Date.now();
@@ -52,6 +57,7 @@ const START_TIMER = () => {
     }
 };
 
+//creo la variabile con l intervallo di tempo desiderato
 const INTERVAL = setInterval(() => {
     const TIME_LAPSE = Math.floor((Date.now() - timerCount) / 1000);
     sessionStorage.setItem('timer', TIME_LAPSE);
@@ -59,3 +65,4 @@ const INTERVAL = setInterval(() => {
 }, 1000);
 
 START_TIMER();
+
