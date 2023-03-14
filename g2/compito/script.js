@@ -57,7 +57,7 @@ const START_TIMER = () => {
     }
 };
 
-//creo la variabile con l intervallo di tempo desiderato
+//creo la variabile con l intervallo di tempo desiderato inserendola nel session storage 
 const INTERVAL = setInterval(() => {
     const TIME_LAPSE = Math.floor((Date.now() - timerCount) / 1000);
     sessionStorage.setItem('timer', TIME_LAPSE);
