@@ -35,7 +35,7 @@ const SAVED_NAME = () => {
     const savedName = localStorage.getItem('name');
     if (savedName) {
         nameInput.value = savedName;
-        showSavedName.textContent = savedName;
+        showSavedName.innerText = savedName;
     }
 };
 
@@ -43,7 +43,7 @@ const SAVED_NAME = () => {
 
 //al click del btn save mi scrive nel tag <p></p> il valore inserito precedentemente nel locale storage
 SAVE_BTN.addEventListener('click', () => {
-    showSavedName.textContent = nameInput.value;
+    showSavedName.innerText = nameInput.value;
 
 });
 
@@ -61,7 +61,7 @@ const START_TIMER = () => {
 const INTERVAL = setInterval(() => {
     const TIME_LAPSE = Math.floor((Date.now() - timerCount) / 1000);
     sessionStorage.setItem('timer', TIME_LAPSE);
-    TIMER.textContent = TIME_LAPSE;
+    TIMER.innerText = TIME_LAPSE;
 }, 1000);
 
 START_TIMER();
