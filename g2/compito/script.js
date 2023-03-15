@@ -32,13 +32,13 @@ document.querySelector('.remove-btn').addEventListener('click', REMOVE_NAME);
 
 //salvo in una costante la funzione che mi prende nel local storage il dato inserito nel campo input name
 //applico una condizione che se esiste mi inserisce il valore inserito precedentemente nell'input name nel tag <p></p> soprastante
-const SAVED_NAME = () => {
+/* const SAVED_NAME = () => {
     const savedName = localStorage.getItem('name');
     if (savedName) {
         nameInput.value = savedName;
         showSavedName.innerText = savedName;
     }
-};
+}; */
 
 
 //creo e salvo nel sessions torage la variabile per inizializzare il timer
